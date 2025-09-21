@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suwahas Sathsara Official</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+/* General Reset */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #0f172a;
+  color: #fff;
+  text-align: center;
+}
+
+/* Header */
+header {
+  padding: 20px;
+}
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 15px auto;
+  border: 3px solid #3b82f6;
+}
+
+/* Titles */
+h1 {
+  font-size: 28px;
+  color: #3b82f6;
+  margin: 10px 0 4px;
+}
+h2 {
+  font-size: 16px;
+  color: #94a3b8;
+  margin: 0 0 15px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: #2563eb;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 6px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* About Section */
+section {
+  background: #111827;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+  border: 1px solid #1f2937;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+section h3 {
+  text-align: center;
+  margin-bottom: 12px;
+  font-size: 20px;
+  color: #3b82f6;
+}
+section p,
+section ul {
+  color: #e5e7eb;
+  font-size: 15px;
+  line-height: 1.7em;
+}
+
+
+/* Sidebar */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 240px;
+  height: 100%;
+  background: linear-gradient(180deg, #0f172a, #1e293b);
+  border-left: 2px solid #3b82f6;
+  padding-top: 90px;
+  transition: right 0.4s ease;
+  box-shadow: -4px 0 12px rgba(0,0,0,0.6);
+  z-index: 999;
+}
+
+.side-menu a {
+  display: block;
+  padding: 14px 22px;
+  margin: 8px 12px;
+  border-radius: 8px;
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.side-menu a:hover {
+  background: #1e3a8a;
+  color: #ffffff;
+  padding-left: 30px;
+  box-shadow: inset 3px 0 0 #3b82f6;
+}
+
+.side-menu a.active {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(37,99,235,0.6);
+}
+
+/* Animate menu open */
+.side-menu.active {
+  right: 0;
+}
+
+
+/* Social Icons */
+.socials a {
+  color: #94a3b8;
+  margin: 0 10px;
+  font-size: 22px;
+}
+.socials a:hover {
+  color: #3b82f6;
+}
+
+/* Video Container inside About */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+/* Footer + DP Photo Slider */
+footer {
+  background: #111827;
+  margin-top: 30px;
+  padding: 20px;
+  border-top: 1px solid #1f2937;
+  text-align: center;
+}
+footer h3 {
+  color: #3b82f6;
+  margin-bottom: 15px;
+}
+footer .slider {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+footer .slides {
+  display: flex;
+  width: 500%;
+  animation: slide 15s infinite;
+}
+footer .dp-card {
+  flex: 1;
+  text-align: center;
+  background: #1e293b;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+footer .dp-card:hover {
+  transform: translateY(-5px);
+}
+footer .dp-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 10px auto;
+  border: 4px solid #ffffff; /* white round border */
+  box-shadow: 0 0 15px #3b82f6, 0 0 30px #1d4ed8; /* blue glowing ring */
+  transition: all 0.3s ease;
+}
+footer .dp-card img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #60a5fa, 0 0 40px #3b82f6, 0 0 60px #1d4ed8; /* stronger glow on hover */
+}
+footer .dp-card p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #e5e7eb;
+  font-weight: 600;
+  animation: slideUp 1s ease-in-out;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide {
+  0% { margin-left: 0; }
+  20% { margin-left: 0; }
+  25% { margin-left: -100%; }
+  45% { margin-left: -100%; }
+  50% { margin-left: -200%; }
+  70% { margin-left: -200%; }
+  75% { margin-left: -300%; }
+  95% { margin-left: -300%; }
+  100% { margin-left: -400%; }
+}
+
+/* Menu Icon */
+.menu-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1000;
+}
+.menu-icon:hover {
+  color: #3b82f6;
+}
+
+  .loader-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .loader-dots div {
+    width: 12px;
+    height: 12px;
+    background: #3b82f6;
+    border-radius: 50%;
+    animation: bounce 0.6s infinite alternate;
+  }
+  .loader-dots div:nth-child(2) { animation-delay: 0.2s; }
+  .loader-dots div:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bounce {
+    from { transform: translateY(0); opacity: 0.6; }
+    to { transform: translateY(-12px); opacity: 1; }
+  }
+
+
+
+  to   { text-shadow: 0 0 15px #60a5fa, 0 0 25px #3b82f6; }
+}
+
+
+.footer-credit {
+  text-align: center;
+  font-size: 14px;
+  color: #9ca3af;
+  margin-top: 20px;
+  padding: 10px 0;
+  animation: fadeInUp 1.8s ease-in-out;
+  font-family: "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.5px;
+}
+.footer-credit span {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  font-weight: 600;
+  animation: shine 4s linear infinite;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shine {
+  0% { background-position: 200% center; }
+  100% { background-position: 0 center; }
+}
+
+
+.video-gallery {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.video-gallery img {
+  width: 200px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.video-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.85);
+}
+.modal iframe {
+  display: block;
+  margin: auto;
+  max-width: 80%;
+  border-radius: 10px;
+}
+.close {
+  position: absolute;
+  top: 15px; right: 35px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:hover {
+  color: #3b82f6;
+}
+
+
+.video-slider {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+
+.video-slides img {
+  width: 220px;
+  height: 140px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 10px;
+  margin: 0 6px;
+  transition: transform 0.2s ease;
+}
+.video-slides img:hover {
+  transform: scale(1.08);
+}
+.video-slider {
+  max-width: 100%;
+}
+
+.video-slides img:hover {
+  transform: scale(1.05);
+}
+
+  20%  { margin-left: 0; }
+  25%  { margin-left: -100%; }
+  45%  { margin-left: -100%; }
+  50%  { margin-left: -200%; }
+  70%  { margin-left: -200%; }
+  75%  { margin-left: -300%; }
+  100% { margin-left: -300%; }
+}
+
+
+
+  100% { transform: translateX(-100%); }
+}
+
+
+
+.video-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.video-slides {
+  display: flex;
+  width: max-content;
+  animation: scrollLeft 25s linear infinite;
+}
+
+.video-slides img {
+  width: 220px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.video-slides img:hover {
+  transform: scale(1.08);
+}
+
+@keyframes scrollLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+.coming-soon {
+  width: 220px;
+  height: 140px;
+  background: #1f2937;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: 10px;
+  margin: 0 6px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+
+/* Stylish Vivid Banner */
+.profile-banner {
+  position: relative;
+  text-align: center;
+}
+
+.profile-banner .banner {
+  width: 100%;
+  height: 220px;
+  background: url("banner.png") no-repeat center center;
+  background-size: cover;
+  border-bottom: 4px solid #3b82f6;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient overlay for vivid look */
+.profile-banner .banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(37,99,235,0.4), rgba(96,165,250,0.4));
+  mix-blend-mode: overlay;
+}
+
+/* Shine effect */
+.profile-banner .banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
+  transform: skewX(-20deg);
+  animation: shine 6s infinite;
+}
+
+@keyframes shine {
+  0%   { left: -100%; }
+  50%  { left: 120%; }
+  100% { left: 120%; }
+}
+
+/* Profile Pic Centered Over Banner */
+.profile-banner .profile-pic {
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  box-shadow: 0 0 15px #ffffff, 0 0 30px rgba(255,255,255,0.8);
+  background: #fff;
+  object-fit: cover;
+}
+
+/* Adjust title position */
+.profile-banner h1 {
+  margin-top: 90px;
+  font-size: 28px;
+  color: #3b82f6;
+}
+
+.profile-banner h2 {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #94a3b8;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Page Loader -->
+<div id="page-loader">
+  <div class="loader-content">
+    
+    <div class="loader-dots">
+      <div></div><div></div><div></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+    
+  </div>
+</div>
+<style>
+  /* Loader styles */
+  #page-loader {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(6,11,30,0.95), rgba(10,15,40,0.95));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+  }
+  .loader-content {
+    text-align: center;
+    color: #e6eefc;
+  }
+  .spinner {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 8px solid rgba(255,255,255,0.12);
+    border-top: 8px solid #60a5fa; /* light blue */
+    animation: spin 1s linear infinite;
+    margin: 0 auto 12px;
+    box-shadow: 0 0 20px rgba(59,130,246,0.18);
+  }
+  .loader-text {
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    font-size: 15px;
+    color: #cfe9ff;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  /* optional small logo inside loader */
+  .loader-logo {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 10px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+  }
+  /* make sure content underneath isn't scrollable while loader is visible */
+  body.loading-active { overflow: hidden; }
+
+/* Stylish Vivid Banner */
+.profile-banner {
+  position: relative;
+  text-align: center;
+}
+
+.profile-banner .banner {
+  width: 100%;
+  height: 220px;
+  background: url("banner.png") no-repeat center center;
+  background-size: cover;
+  border-bottom: 4px solid #3b82f6;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient overlay for vivid look */
+.profile-banner .banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(37,99,235,0.4), rgba(96,165,250,0.4));
+  mix-blend-mode: overlay;
+}
+
+/* Shine effect */
+.profile-banner .banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
+  transform: skewX(-20deg);
+  animation: shine 6s infinite;
+}
+
+@keyframes shine {
+  0%   { left: -100%; }
+  50%  { left: 120%; }
+  100% { left: 120%; }
+}
+
+/* Profile Pic Centered Over Banner */
+.profile-banner .profile-pic {
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  box-shadow: 0 0 15px #ffffff, 0 0 30px rgba(255,255,255,0.8);
+  background: #fff;
+  object-fit: cover;
+}
+
+/* Adjust title position */
+.profile-banner h1 {
+  margin-top: 90px;
+  font-size: 28px;
+  color: #3b82f6;
+}
+
+.profile-banner h2 {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #94a3b8;
+}
+
+</style>
+
+<script>
+  // Hide loader after 5 seconds (3000 ms)
+  document.documentElement.classList.add('loading-active');
+  document.addEventListener('DOMContentLoaded', function() {
+    // make sure loader shows at least until DOM ready, then wait 5s
+    setTimeout(function() {
+      var loader = document.getElementById('page-loader');
+      if (!loader) return;
+      loader.style.opacity = '0';
+      document.documentElement.classList.remove('loading-active');
+      // remove from DOM after transition
+      setTimeout(function(){ loader.remove(); }, 700);
+    }, 3000); // 5 seconds
+  });
+</script>
+<!-- End Page Loader -->
+
+
+
+  <div class="menu-icon" onclick="toggleMenu()">
+    <i class="fa fa-bars"></i>
+  </div>
+
+  
+  <header class="profile-banner">
+    <div class="banner"></div>
+    <img src="your-profile.jpg" class="profile-pic" alt="Profile Picture">
+    <h1>Suwahas Sathsara Official</h1>
+    <h2>Professional Cash Agent Services</h2>
+    <a href="#" class="btn"><i class="fa-solid fa-download"></i> Download App</a><br>
+    <a href="#" class="btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp 1</a>
+    <a href="#" class="btn"><i class="fa-solid fa-phone"></i> Call</a>
+    <a href="#" class="btn"><i class="fa-brands fa-facebook"></i> Facebook</a>
+    <a href="#" class="btn"><i class="fa-brands fa-youtube"></i> YouTube</a>
+    <a href="#" class="btn"><i class="fa-brands fa-whatsapp"></i> Group</a>
+    <a href="#" class="btn"><i class="fa-solid fa-check"></i> Proof</a>
+  </header>
+
+
+  
+
+
+<section>
+  <h3>Our YouTube Videos</h3>
+  <p>අපේ channel එකේ දාන නවතම videos බලන්න.</p>
+
+  <div class="video-slider">
+    <div class="video-slides">
+      
+      <!-- Real Videos -->
+      <img src="https://img.youtube.com/vi/omGNVcWfjik/0.jpg" onclick="openVideo('omGNVcWfjik')" alt="Video 1">
+      <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg" onclick="openVideo('dQw4w9WgXcQ')" alt="Video 2">
+      <img src="https://img.youtube.com/vi/tgbNymZ7vqY/0.jpg" onclick="openVideo('tgbNymZ7vqY')" alt="Video 3">
+
+      <!-- Replaced Coming Soon with your links -->
+      <img src="https://img.youtube.com/vi/ZwGy4UVxL_k/0.jpg" onclick="openVideo('ZwGy4UVxL_k')" alt="Video 4">
+      <img src="https://img.youtube.com/vi/JPrABcbPQPM/0.jpg" onclick="openVideo('JPrABcbPQPM')" alt="Video 5">
+      <img src="https://img.youtube.com/vi/TRPOFvpbq28/0.jpg" onclick="openVideo('TRPOFvpbq28')" alt="Video 6">
+      <img src="https://img.youtube.com/vi/VfQWR36iTGU/0.jpg" onclick="openVideo('VfQWR36iTGU')" alt="Video 7">
+
+      <!-- Keep some placeholders -->
+
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- Popup Modal -->
+<div id="videoModal" class="modal">
+  <span onclick="closeVideo()" class="close">&times;</span>
+  <iframe id="videoFrame" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<!-- Popup Modal -->
+<div id="videoModal" class="modal">
+  <span onclick="closeVideo()" class="close">&times;</span>
+  <iframe id="videoFrame" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<!-- Popup Modal -->
+<div id="videoModal" class="modal">
+  <span onclick="closeVideo()" class="close">&times;</span>
+  <iframe id="videoFrame" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<!-- Footer with styled DP photo slider -->
+<footer>
+  <h3>👇 HELPER CONTACT 👇</h3>
+  <div class="slider">
+    <div class="slides">
+      <div class="dp-card">
+     
+        <a href="https://wa.me/947XXXXXXXX" target="_blank"><img src="hewa.jpg" alt="DP Photo 1"></a>
+        
+        <p>Deposit & Withdrawal Cash Ajant Hewa</p>
+      </div>
+      <div class="dp-card">
+        <a href="https://wa.me/947XXXXXXXX" target="_blank"><img src="prakash.jpg" alt="DP Photo 2"></a>
+        <p>Paripulse Asia Hed Manager Prakash</p>
+      </div>
+      <div class="dp-card">
+        <a href="https://wa.me/947XXXXXXXX" target="_blank"><img src="your-profile.jpg" alt="DP Photo 3"></a>
+        <p>Suwahas Sathsara Youtube Channel Owner</p>
+      </div>
+      <div class="dp-card">
+        <a href="https://wa.me/947XXXXXXXX" target="_blank"><img src="dp4.jpg" alt="DP Photo 4"></a>
+        <p>Support</p>
+      </div>
+      <div class="dp-card">
+        <a href="https://wa.me/947XXXXXXXX" target="_blank"><img src="dp5.jpg" alt="DP Photo 5"></a>
+        <p>Admin</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-credit">
+    🌐 Web Deployed by <span>Suwahas Sathsara</span>
+  </div>
+
+</footer>
+</a>
+
+
+<script>
+function toggleMenu() {
+  var menu = document.getElementById("sideMenu");
+  menu.classList.toggle("active");
+}
+
+// Close menu when a link is clicked
+document.addEventListener("DOMContentLoaded", function() {
+  var links = document.querySelectorAll(".side-menu a");
+  links.forEach(function(link) {
+    link.addEventListener("click", function() {
+      document.getElementById("sideMenu").classList.remove("active");
+    });
+  });
+});
+</script>
+
+
+<div id="sideMenu" class="side-menu">
+  <a href="#" class="active">🏠 Home</a>
+  <a href="#">💰 Whatsapp Bot Deployed</a>
+  <a href="#">🎟 Promo Code</a>
+  <a href="#">🛠 Support</a>
+  <a href="#">ℹ️ About</a>
+</div>
+
+
+
+<script>
+function openVideo(id) {
+  document.getElementById("videoModal").style.display = "block";
+  document.getElementById("videoFrame").src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
+}
+function closeVideo() {
+  document.getElementById("videoModal").style.display = "none";
+  document.getElementById("videoFrame").src = "";
+}
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

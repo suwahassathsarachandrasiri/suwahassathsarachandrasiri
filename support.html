@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-container {
+      background: #111;
+      padding: 25px;
+      border-radius: 12px;
+      width: 350px;
+      box-shadow: 0 0 15px rgba(0,123,255,0.6);
+    }
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #1e90ff;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #1e90ff;
+    }
+    .form-group input, 
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      background: #222;
+      color: #fff;
+    }
+    .form-group textarea {
+      height: 100px;
+      resize: none;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #1e90ff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #0066cc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Send Us a Message</h2>
+    <form id="supportForm">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="whatsapp">WhatsApp</label>
+        <input type="text" id="whatsapp" placeholder="+9477XXXXXXX" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" required></textarea>
+      </div>
+      <button type="submit" class="btn">Submit Inquiry</button>
+    </form>
+  </div>
+
+  
+  <script>
+    const form = document.getElementById('supportForm');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const whatsapp = document.getElementById('whatsapp').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if(!name || !email || !whatsapp || !message){
+        alert("Please fill all fields.");
+        return;
+      }
+
+      const telegramBotToken = "8219086932:AAHuH9WaKxM-PTkeEOosMDiIu8bPZD772A4"; // <-- Put your Bot Token here
+      const chatId = "7135887501"; // <-- Put your Chat ID here
+
+      const text = `📩 New Support Inquiry
+
+👤 Name: ${name}
+📧 Email: ${email}
+📱 WhatsApp: ${whatsapp}
+💬 Message: ${message}`;
+
+      fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: text
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.ok){
+          alert("✅ Message Sent!");
+          form.reset();
+        } else {
+          alert("❌ Failed: " + JSON.stringify(data));
+        }
+      })
+      .catch(err => {
+        alert("⚠️ Error: " + err);
+      });
+    });
+  </script>
+</body>
+
+</html>
